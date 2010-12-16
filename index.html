@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.7.custom.css" rel="Stylesheet" />	
+<script type="text/javascript" src="js/jquery-1.4.4.min.js"></script>
+<script type="text/javascript" src="js/jquery-ui-1.8.7.custom.min.js"></script>
+</head>
+<body>
+<style>
+.argument {
+	moz-border-radius: 12px;
+	-webkit-border-radius: 12px;
+	background-color: #B0CAEB;
+	color: black;
+	border: 1px solid #1064F8;
+	font-family: "Menlo";
+	text-align: center;
+}
+
+* {
+	font-family: "Menlo";
+}
+</style>
+<div id="sentence" class="">
+</div>
+<!--<a href="http://kyleschaeffer.com/best-practices/input-prompt-text/">http://kyleschaeffer.com/best-practices/input-prompt-text/</a>-->
+<script>
+$.sentence = { 
+ 	arguments : new Array()
+};
+
+var arg_keypress = function(event) {
+	if (event.keyCode == 13 || event.keyCode == 9) {
+		if (event.preventDefault) {
+            event.preventDefault();
+        }
+		x = introduce_new_argument($(event.target).parent());
+	}
+};
+
+var arg_keyup = function(event) {
+	var t = $(event.target);
+	var l = event.target.value.length;
+	if (l == 0) {
+		t.hide(250, function() { t.remove(); });
+//		$.sentence.arguments.remove()
+	} else {
+		t.animate({width: (l < 2 ? 2 : l) + "em"}, 50);
+	}
+};
+
+function introduce_new_argument(parent) {
+	var n = ($.sentence.arguments.length + 1);
+	var x = $('<input id="arg' + n + '" class="argument" type="text" value="arg' + n + '" />');
+	$.sentence.arguments.push(x);
+	x.appendTo(parent);
+//	x.autocomplete({
+//		source: "um0 um1 pm0 pm1".split(" ")
+//	});
+	x.keypress(arg_keypress);
+	x.keyup(arg_keyup);
+	x.focus();
+	return x;
+}
+
+introduce_new_argument("#sentence");
+</script>
+
+</body>
+</html>
