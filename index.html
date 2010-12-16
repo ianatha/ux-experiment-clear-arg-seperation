@@ -42,16 +42,20 @@ var arg_keyup = function(event) {
 	var t = $(event.target);
 	var l = event.target.value.length;
 	if (l == 0) {
-		t.hide(250, function() { t.remove(); });
-//		$.sentence.arguments.remove()
+		var id = t.attr('id').split("sentence_arg")[1];
+		$("#sentence_arg" + (id - 1)).focus();
+		t.hide(250, function() {
+			t.remove();
+			$.sentence.arguments.splice(id, 1);
+		});
 	} else {
 		t.animate({width: (l < 2 ? 2 : l) + "em"}, 50);
 	}
 };
 
 function introduce_new_argument(parent) {
-	var n = ($.sentence.arguments.length + 1);
-	var x = $('<input id="arg' + n + '" class="argument" type="text" value="arg' + n + '" />');
+	var n = $.sentence.arguments.length;
+	var x = $('<input id="sentence_arg' + n + '" class="argument" type="text" style="width:2em;" value="arg' + n + '" />');
 	$.sentence.arguments.push(x);
 	x.appendTo(parent);
 //	x.autocomplete({
