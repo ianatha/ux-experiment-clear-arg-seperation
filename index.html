@@ -58,9 +58,9 @@ function introduce_new_argument(parent) {
 	var x = $('<input id="sentence_arg' + n + '" class="argument" type="text" style="width:2em;" value="arg' + n + '" />');
 	$.sentence.arguments.push(x);
 	x.appendTo(parent);
-//	x.autocomplete({
-//		source: "um0 um1 pm0 pm1".split(" ")
-//	});
+	x.autocomplete({
+		source: "um0 um1 pm0 pm1 fe0 fe1 fe2 ab1 ab2 ab3 api0 ced0 iaa3".split(" ")
+	});
 	x.keypress(arg_keypress);
 	x.keyup(arg_keyup);
 	x.focus();
