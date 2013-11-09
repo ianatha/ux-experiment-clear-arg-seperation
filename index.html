@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.base.min.css"/>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
-	<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
+	<link type="text/css" href="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/css/base/jquery.ui.base.min.css"/>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+	<script type="text/javascript" src="http://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 </head>
 <body>
 <style>
@@ -23,7 +23,6 @@
 </style>
 <div>What do you want to do today?</div>
 <div id="sentence" class=""></div>
-<!--<a href="http://kyleschaeffer.com/best-practices/input-prompt-text/">http://kyleschaeffer.com/best-practices/input-prompt-text/</a>-->
 <script>
 $.sentence = { 
  	arguments : new Array()
@@ -59,7 +58,7 @@ function introduce_new_argument(parent) {
 	$.sentence.arguments.push(x);
 	x.appendTo(parent);
 	x.autocomplete({
-		source: "um0 um1 pm0 pm1 fe0 fe1 fe2 ab1 ab2 ab3 api0 ced0 iaa3".split(" ")
+		source: "service1 service2 getstuff getsomething post".split(" ")
 	});
 	x.keypress(arg_keypress);
 	x.keyup(arg_keyup);
